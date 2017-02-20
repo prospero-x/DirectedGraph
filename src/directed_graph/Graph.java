@@ -397,7 +397,7 @@ public class Graph
             return 0;
         /*
         We may have arrived back at START but still wish to continue. 
-        That is why this conditino is not a base case. */
+        That is why this condition is not a base case. */
         else if (arrived && curr_dist >= minDist)
             numpaths++;
         Node node = getNode(start);
