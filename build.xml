@@ -1,6 +1,7 @@
 <project name="DirectedGraph">
 
     <!-- Project Structure -->
+
     <property name="graph.src" value="src/directed_graph"/>
     <property name="graph.bld" value="build/classes"/>
     
@@ -15,12 +16,18 @@
 
     <property name="test.src" value="tests/test-src"/>
     <property name="test.bld" value="tests/test-build"/>
+
+
     <property name="report.dir" value="tests/report/"/>
+
+    <!-- JUnit test library -->
     <property name="lib.dir" value="lib"/>
 
     <target name="clean">
         <delete dir="build"/>
         <delete dir="${test.bld}"/>
+        <delete dir="${report.dir}"/>
+
     </target>
 
     <!-- Compile the directed graph -->
