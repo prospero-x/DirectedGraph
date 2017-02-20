@@ -1,16 +1,5 @@
 Testsuite: NumPathsTest_Invalid_graph1
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.132 sec
-------------- Standard Output ---------------
-Weight: 5
-Weight: 4
-Weight: 8
-Weight: 8
-Weight: 6
-Weight: 5
-Weight: 2
-Weight: 3
-Weight: 7
-------------- ---------------- ---------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec
 
 Testcase: test[0] took 0 sec
 Testcase: test[1] took 0 sec

@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -13,18 +13,20 @@ import java.util.*;
 import java.lang.*;
 
 /*
-    NUMPATHS_TEST_INVALID_GRAPH1: Some invalid 
-    input is given to the numPaths function. 
+    PATHTEST_Invalid_GRAPH1: test that the program 
+    identifies paths which are not valid according 
+    to the graph (even though the nodes specified
+    might individually exist in the graph )
 */
 
 @RunWith(Parameterized.class)
-public class NumPathsTest_Invalid_graph1{
+public class evaluatePathTest_Invalid{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public NumPathsTest_Invalid_graph1()
+	public evaluatePathTest_Invalid()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)
@@ -36,26 +38,16 @@ public class NumPathsTest_Invalid_graph1{
 	}
 
     @Parameters
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] {
-			{'A', 'Z', 0, 0}, /* Nonexistant Node */
-			{'A', 'B', 0, -1}, /* Negative number of Nodes */
-			{'C', 'C', 3, 2}, /* Min nodes greater than max nodes */
-		});
+	public static Object[] data() {
+		return new Object[]{
+			"BAE", "AEBE", "DCA", "DB" 
+		};
 	}
 
 	/* Inject the parameters into nonstatic fields */
 	@Parameter
-	public char pStart; /* Starting node */
+	public String pPath;
 
-	@Parameter(1)
-	public char pEnd; /* Ending node */
-
-	@Parameter(2) 
-	public int pMinNodes; /* Min nodes on path */
-
-	@Parameter(3)
-	public int pMaxNodes; /* Max nodes on path */
 
 	/* Run a parameterization of the test. This will get 
 	   called for each element in the array returned by 
@@ -63,7 +55,8 @@ public class NumPathsTest_Invalid_graph1{
     */ 
     @Test
     public void test(){
-        int n = test_graph.numPaths(pStart, pEnd, 0, pMinNodes, pMaxNodes);
-        assertEquals(0, n);
+        Path path = new Path(pPath);
+        test_graph.evaluatePath(path);
+        assertEquals(false, path.Exists());
     }	
 }

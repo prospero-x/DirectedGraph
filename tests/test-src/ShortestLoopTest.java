@@ -19,13 +19,13 @@ import java.lang.*;
 */
 
 @RunWith(Parameterized.class)
-public class ShortestPath_Test_graph1{
+public class ShortestLoopTest{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public ShortestPath_Test_graph1()
+	public ShortestLoopTest()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)
@@ -39,22 +39,10 @@ public class ShortestPath_Test_graph1{
     @Parameters
 	public static Collection<Object[]> data() {
 		return Arrays.asList(new Object[][] {
-			{'A', 'B', 5, "AB"},
-			{'A', 'C', 9, "ABC"},
-			{'A', 'D', 5, "AD"},
-			{'A', 'E', 7, "AE"},
-			{'B', 'C', 4, "BC"}, /* FAILING */ 
-			{'B', 'D', 12, "BCD"}, 
-			{'B', 'E', 6, "BCE"},  
-			{'C', 'B', 5, "CEB"}, 
-			{'C', 'D', 8, "CD"}, 
-			{'C', 'E', 2, "CE"}, 
-			{'D', 'B', 9, "DEB"}, 
-			{'D', 'C', 8, "DC"}, 
-			{'D', 'E', 6, "DE"}, 
-			{'E', 'B', 3, "EB"}, 
-			{'E', 'C', 7, "EBC"}, 
-			{'E', 'D', 15, "EBCD"},  
+			{'B', 'B', 9, "BCEB"},
+			{'C', 'C', 9, "CEBC"},
+			{'D', 'D', 16, "DCD"},
+			{'E', 'E', 9, "EBCE"}, /* FAILING */ 
 		});
 	}
 	/* Inject the parameters into nonstatic fields */
@@ -77,7 +65,7 @@ public class ShortestPath_Test_graph1{
     */ 
     @Test
     public void test(){
-        Path path = test_graph.ShortestPath(pStart, pEnd);
+        Path path = test_graph.ShortestLoop(pStart, pEnd);
         assertEquals(pExpectedDist, path.Weight());
         assertEquals(pExpectedPath, path.PathString());
     }	

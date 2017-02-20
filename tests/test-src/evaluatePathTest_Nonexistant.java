@@ -13,18 +13,19 @@ import java.util.*;
 import java.lang.*;
 
 /*
-    NUMPATHS_TEST_GRAPH1: tests numPaths function
-    of the Graph Class. 
+    PATHTEST_NONEXISTANT_GRAPH1: tests that the 
+    program identifies requested paths which contain 
+    a nonexistant node 
 */
 
 @RunWith(Parameterized.class)
-public class NumPathsTest_graph1{
+public class evaluatePathTest_Nonexistant{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public NumPathsTest_graph1()
+	public evaluatePathTest_Nonexistant()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)
@@ -36,31 +37,16 @@ public class NumPathsTest_graph1{
 	}
 
     @Parameters
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] {
-			{'C', 'C', 0, 0},
-			{'C', 'C', 1, 0},
-			{'C', 'C', 3, 2}, 
-			{'C', 'C', 6, 10},
-			{'A', 'B', 1, 1}, 
-			{'A', 'B', 2, 2}, 
-			{'A', 'B', 3, 3},
-			{'A', 'B', 4, 5}
-		});
+	public static Object[] data() {
+		return new Object[]{
+	        "Z", "ADCZ", "ZADC", "ADZC"
+		};
 	}
 
 	/* Inject the parameters into nonstatic fields */
 	@Parameter
-	public char pStart; /* Starting node */
+	public String pPath;
 
-	@Parameter(1)
-	public char pEnd; /* Ending node */
-
-	@Parameter(2) 
-	public int pMaxNodes; /* Max nodes on path */
-
-	@Parameter(3)
-	public int pExpected; /* Expected Result  */
 
 	/* Run a parameterization of the test. This will get 
 	   called for each element in the array returned by 
@@ -68,7 +54,9 @@ public class NumPathsTest_graph1{
     */ 
     @Test
     public void test(){
-        int n = test_graph.numPaths(pStart, pEnd, 0, 0, pMaxNodes);
-        assertEquals(pExpected, n);
+        Path path = new Path(pPath);
+        test_graph.evaluatePath(path);
+        assertEquals(true, path.BadNodeExists());
+        assertEquals('Z', path.BadNode());
     }	
 }

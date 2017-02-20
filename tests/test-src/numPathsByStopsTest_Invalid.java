@@ -13,19 +13,18 @@ import java.util.*;
 import java.lang.*;
 
 /*
-    PATHTEST_NONEXISTANT_GRAPH1: tests that the 
-    program identifies requested paths which contain 
-    a nonexistant node 
+    NUMPATHS_TEST_INVALID_GRAPH1: Some invalid 
+    input is given to the numPaths function. 
 */
 
 @RunWith(Parameterized.class)
-public class PathTest_Nonexistant_graph1{
+public class numPathsByStopsTest_Invalid{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public PathTest_Nonexistant_graph1()
+	public numPathsByStopsTest_Invalid()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)
@@ -37,16 +36,26 @@ public class PathTest_Nonexistant_graph1{
 	}
 
     @Parameters
-	public static Object[] data() {
-		return new Object[]{
-	        "Z", "ADCZ", "ZADC", "ADZC"
-		};
+	public static Collection<Object[]> data() {
+		return Arrays.asList(new Object[][] {
+			{'A', 'Z', 0, 0}, /* Nonexistant Node */
+			{'A', 'B', 0, -1}, /* Negative number of Nodes */
+			{'C', 'C', 3, 2}, /* Min nodes greater than max nodes */
+		});
 	}
 
 	/* Inject the parameters into nonstatic fields */
 	@Parameter
-	public String pPath;
+	public char pStart; /* Starting node */
 
+	@Parameter(1)
+	public char pEnd; /* Ending node */
+
+	@Parameter(2) 
+	public int pMinNodes; /* Min nodes on path */
+
+	@Parameter(3)
+	public int pMaxNodes; /* Max nodes on path */
 
 	/* Run a parameterization of the test. This will get 
 	   called for each element in the array returned by 
@@ -54,9 +63,7 @@ public class PathTest_Nonexistant_graph1{
     */ 
     @Test
     public void test(){
-        Path path = new Path(pPath);
-        test_graph.evaluatePath(path);
-        assertEquals(true, path.BadNodeExists());
-        assertEquals('Z', path.BadNode());
+        int n = test_graph.numPathsByStops(pStart, pEnd, 0, pMinNodes, pMaxNodes);
+        assertEquals(0, n);
     }	
 }

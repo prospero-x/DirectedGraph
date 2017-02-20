@@ -1,5 +1,5 @@
-Testsuite: NumPathsTest_graph1
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec
+Testsuite: numPathsByStopsTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 sec
 
 Testcase: test[0] took 0.001 sec
 Testcase: test[1] took 0 sec
@@ -7,5 +7,5 @@ Testcase: test[2] took 0 sec
 Testcase: test[3] took 0 sec
 Testcase: test[4] took 0 sec
 Testcase: test[5] took 0 sec
-Testcase: test[6] took 0.001 sec
+Testcase: test[6] took 0 sec
 Testcase: test[7] took 0 sec

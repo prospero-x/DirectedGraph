@@ -24,6 +24,8 @@ public class Path{
        path_exists = true;
        bad_node_exists = false;
     }
+
+    /* Public PATH accessors */
     public void setPath(String newpath)
     {
         path = newpath;
@@ -32,6 +34,8 @@ public class Path{
     {
         return path;
     }
+
+    /* Public WEIGHT accessors */
     public void setWeight(int newWeight)
     {
         weight = newWeight;
@@ -40,6 +44,8 @@ public class Path{
     {
         return weight;
     }
+
+    /* Public EXISTS accessors */
     public void setExists(boolean b)
     {
         path_exists = b;
@@ -48,6 +54,8 @@ public class Path{
     {
         return path_exists;
     }
+
+    /* Public BAD_NODE_EXISTS accessors */
     public void setBadNodeExists(boolean b)
     {
         bad_node_exists = b;
@@ -56,6 +64,8 @@ public class Path{
     {
         return bad_node_exists;
     }
+
+    /* Public BAD_NODE accessors */
     public void setBadNode(char c)
     {
         bad_node = c;

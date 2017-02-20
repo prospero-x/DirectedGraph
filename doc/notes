@@ -1,0 +1,5 @@
+I started writing this code fall of my senior year. Savitch's introduction textbook on Java programming was a graet place to start, especially with setting up Linked Data structures. 
+
+I picked this up a few months ago, where I added the JUnit tests and the XML build script with Apache Ant. This made compilation much faster and more flexible, perfect for a medium size software project. 
+
+I imagine that as the scale increases, the XML format will no longer be as practical as graphical IDEs like Eclipse or IntelliJ.  

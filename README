@@ -103,7 +103,8 @@ The directed_graph class suite itself can be tested with the command:
         user@hostname:<pathname>/DirectedGraph$ ant junit
 
 This spawns a series of parameterized JUnit tests. Note that this only 
-tests the library itself, and not any later user programs. 
+tests the library itself, and not any later user programs. The 
+Test report is a plain text file: tests/report/TEST-**.txt
 
 
 

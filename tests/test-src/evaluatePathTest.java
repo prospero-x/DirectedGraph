@@ -18,13 +18,13 @@ import java.lang.*;
 */
 
 @RunWith(Parameterized.class)
-public class PathTest_graph1{
+public class evaluatePathTest{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public PathTest_graph1()
+	public evaluatePathTest()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)

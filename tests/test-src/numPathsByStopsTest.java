@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -13,20 +13,18 @@ import java.util.*;
 import java.lang.*;
 
 /*
-    PATHTEST_Invalid_GRAPH1: test that the program 
-    identifies paths which are not valid according 
-    to the graph (even though the nodes specified
-    might individually exist in the graph )
+    NUMPATHS_TEST_GRAPH1: tests numPaths function
+    of the Graph Class. 
 */
 
 @RunWith(Parameterized.class)
-public class PathTest_Invalid_graph1{
+public class numPathsByStopsTest{
 
 	/* One static graph for all instances */
 	private static Graph test_graph = null;
 
 
-	public PathTest_Invalid_graph1()
+	public numPathsByStopsTest()
 	{
 		/* Only load the graph once */
 		if (test_graph == null)
@@ -38,16 +36,31 @@ public class PathTest_Invalid_graph1{
 	}
 
     @Parameters
-	public static Object[] data() {
-		return new Object[]{
-			"BAE", "AEBE", "DCA", "DB" 
-		};
+	public static Collection<Object[]> data() {
+		return Arrays.asList(new Object[][] {
+			{'C', 'C', 0, 0},
+			{'C', 'C', 1, 0},
+			{'C', 'C', 3, 2}, 
+			{'C', 'C', 6, 10},
+			{'A', 'B', 1, 1}, 
+			{'A', 'B', 2, 2}, 
+			{'A', 'B', 3, 3},
+			{'A', 'B', 4, 5}
+		});
 	}
 
 	/* Inject the parameters into nonstatic fields */
 	@Parameter
-	public String pPath;
+	public char pStart; /* Starting node */
 
+	@Parameter(1)
+	public char pEnd; /* Ending node */
+
+	@Parameter(2) 
+	public int pMaxNodes; /* Max nodes on path */
+
+	@Parameter(3)
+	public int pExpected; /* Expected Result  */
 
 	/* Run a parameterization of the test. This will get 
 	   called for each element in the array returned by 
@@ -55,8 +68,7 @@ public class PathTest_Invalid_graph1{
     */ 
     @Test
     public void test(){
-        Path path = new Path(pPath);
-        test_graph.evaluatePath(path);
-        assertEquals(false, path.Exists());
+        int n = test_graph.numPathsByStops(pStart, pEnd, 0, 0, pMaxNodes);
+        assertEquals(pExpected, n);
     }	
 }
