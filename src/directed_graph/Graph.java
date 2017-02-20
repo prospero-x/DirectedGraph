@@ -237,7 +237,31 @@ public class Graph
     }
 
     /* Calculate the shortest path between start and end. START and END must 
-       be different. This is Dijkstra's Algorithm with a MinHeap. */
+       be different. This is Dijkstra's Algorithm with a MinHeap. 
+
+        The MinHeap is initialized with every node object containing a distance
+        field. Each node is initialized with a distance value of infinity, except
+        the start node, which is set with a value of zero. 
+
+        For each node in the MinHeap, we do the following: 
+
+            We're sitting at a NODE. Three variables need to be examined:
+            How far we currently are from the start node, the distance 
+            to all of our neighbors, and the current value of the DISTANCE field
+            of all of our neighbors.   
+
+            Two values will be compared: 
+
+            (1)  (our own distance from start) + (our neighbors distance from us)
+
+            and 
+
+            (2)  (the value of our neighbor's DISTANCE field).
+
+            If, for a given neighbor, (1) is smaller than (2), then we have found a 
+            the edge from us to our neighbor is now a primary candidate for the 
+            shortest path. 
+    */
     public Path ShortestPath(char start, char end)
     {
         MinHeap minheap = initializeHeap(start);
@@ -256,23 +280,6 @@ public class Graph
             if (closest.getToList().size() == 0 && closest.GetName() != start)
                 continue;
 
-            /* We're sitting at node CLOSEST. Three variables need to be examined:
-               How far we currently are from the start node, the distance 
-               to all of our neighbors, and the current value of the DISTANCE field
-               of all of our neighbors.   
-
-               Two values will be compared: 
-
-                (1)  (our own distance from start) + (our neighbors distance from us)
-
-                and 
-
-                (2)  (the value of our neighbor's DISTANCE field).
-
-                If, for a given neighbor, (1) is smaller than (2), then we have found a 
-                the edge from us to our neighbor is now a primary candidate for the 
-                shortest path. 
-                */
             int distance = closest.Dist();
 
 
