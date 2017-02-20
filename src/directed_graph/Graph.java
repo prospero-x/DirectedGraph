@@ -282,7 +282,6 @@ public class Graph
 
             int distance = closest.Dist();
 
-
             EdgeList from_list = closest.getFromList();
             Edge curr_link = from_list.getHead();
             while (curr_link != null)
@@ -295,7 +294,6 @@ public class Graph
                     /* This is a candidate for the final distance */
                     if (end_node.GetName() == end)
                         final_dist = new_dist;
-
 
                     end_node.setDist(new_dist);
                     end_node.SetPrev(closest);
