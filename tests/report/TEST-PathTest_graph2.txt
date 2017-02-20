@@ -1,0 +1,20 @@
+Testsuite: PathTest_graph2
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.019 sec
+------------- Standard Output ---------------
+Weight: 5
+Weight: 4
+Weight: 8
+Weight: 8
+Weight: 6
+Weight: 5
+Weight: 2
+Weight: 3
+Weight: 7
+------------- ---------------- ---------------
+
+Testcase: test[0] took 0.001 sec
+	FAILED
+expected:<8888> but was:<9>
+junit.framework.AssertionFailedError: expected:<8888> but was:<9>
+	at PathTest_graph2.test(Unknown Source)
+

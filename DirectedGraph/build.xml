@@ -1,0 +1,63 @@
+<project name="DirectedGraph">
+
+    <!-- Project Structure -->
+    <property name="graph.src" value="src/directed_graph"/>
+    <property name="graph.bld" value="build/classes/"/>
+    <property name="test.src" value="tests/test-src"/>
+    <property name="test.bld" value="tests/test-build"/>
+    <property name="report.dir" value="tests/report/"/>
+    <property name="lib.dir" value="lib"/>
+
+    <target name="clean">
+        <delete dir="${graph.bld}"/>
+        <delete dir="${test.bld}"/>
+    </target>
+
+    <!-- Compile the directed graph -->
+    <target name="compile-graph">
+        <mkdir dir="${graph.bld}"/>
+        <javac srcdir="${graph.src}"
+             destdir="${graph.bld}"
+                 includeantruntime="false">
+        </javac>
+    </target>
+
+    <!-- Compile tests -->
+    <target name="compile-tests" depends="compile-graph">
+        <mkdir dir="${test.bld}"/>
+        <javac srcdir="${test.src}"
+            destdir="${test.bld}"
+                includeantruntime="false">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+            <classpath>
+                <pathelement location="${graph.bld}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Run the JUnit test -->
+    <target name="junit" depends="compile-tests">
+        <delete dir="${report.dir}"/>
+        <mkdir dir="${report.dir}"/>
+
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <pathelement location="${lib.dir}/junit-4.12.jar"/>
+                <pathelement location="${lib.dir}/hamcrest-core-1.3.jar"/>
+                <pathelement location="${graph.bld}"/>
+                <pathelement location="${test.bld}"/>
+            </classpath>
+
+            <formatter type="plain"/>
+            <batchtest fork="true" todir="${report.dir}">
+                <fileset dir="${test.bld}">
+                    <include name="**/*Test*.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+</project>

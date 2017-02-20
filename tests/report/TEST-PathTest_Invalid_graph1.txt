@@ -1,0 +1,18 @@
+Testsuite: PathTest_Invalid_graph1
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec
+------------- Standard Output ---------------
+Weight: 5
+Weight: 4
+Weight: 8
+Weight: 8
+Weight: 6
+Weight: 5
+Weight: 2
+Weight: 3
+Weight: 7
+------------- ---------------- ---------------
+
+Testcase: test[0] took 0.002 sec
+Testcase: test[1] took 0 sec
+Testcase: test[2] took 0 sec
+Testcase: test[3] took 0 sec

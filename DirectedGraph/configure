@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo HEYY
+CLASSPATH=/home/xerxes/Trains_Java/lib/junit-4.12.jar:/home/xerxes/Trains_Java/lib/hamcrest-core-1.3.jar:/home/xerxes/Trains_Java/build/classes
+

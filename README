@@ -1,0 +1,111 @@
+			+------------------------------------+
+			|          Mikhail Rezazadeh         |
+			|          October 26th, 2016        |
+                        |          Directed Graph            |
+			+------------------------------------+
+
+This is a program to load and analyze directed graphs. 
+Functionality includes finding shortest path between two nodes
+using a Dijkstra's Algorithm with a Minheap, which is O(|E| + |V|log(|V|)), 
+finding number of paths with minimum/maximum stops, and finding
+number of paths with a minimum/maximum distance. 
+
+Dependencies:
+    -JVM
+    -Apache Ant
+	
+
+
+This directory tree is organizes as follows:
+
+/DirectedGraph
+	|
+	|- build.xml             //The compiler file to be used with Apache Ant
+        |- lib                   //For use with JUnit testing
+           |
+           |- hamcrest-core-1.3.jar
+           |- junit-4.12.jar
+
+        |- manifest.mf          //Manifest file for a sample program startable jar
+        |- README
+        |- sample
+           |
+           |- sample.java
+
+        |- sample_graphs       //Sample text files to load a graph 
+           |
+           |- graph1
+           |- graph1.png
+        
+        |- src                  //source code for Directed Graph
+           |- directed_graph
+                |
+		|- Edge.java
+		|- EdgeList.java
+		|- Graph.java
+		|- MinHeap.java
+		|- Node.java
+                |- Path.java
+         
+        |- tests                  // Test Directory
+            |
+            |- report 
+            |- test-src/
+                |
+                |- NumPathsTest_graph1.java
+                |- NumPathsTest_Invalid_graph1.java
+                |- PathTest_graph1.java
+                |- PathTest_Invalid_graph1.java
+                |- PathTest_Nonexistant_graph1.java
+                |- ShortestLoop_Test_graph1.java
+                |- ShortestPath_Test_graph1.java
+
+                
+
+1) SAMPLE FILE
+
+	A sample usage is given in sample/sample.java. 
+This sample acts on sample_graphs/graph1. To compile:
+
+        user@hostname:<pathname>/DirectedGraph$ ant sample-jar
+        
+To run the sample:
+        user@hostname:<pathname>/DirectedGraph$ ant run-sample
+
+Graph functions are defined in src/directed_graph/Graph.java. 
+
+To add a new graph to the sample, simply edit the ${sample.graph} 
+property at the top of the build.xml file. 
+
+
+2) INPUT FILE FORMAT
+The <input_file> must be a text file. Trains.class will assume that the input 
+is of the form <nodename1><nodename2><edge_weight>{,} expressing edges and 
+weights. The <nodename1> and <nodename2> is assumed to be exactly one Unicode
+character. The <edge_weight> is assumed to be a number less than a 31-bit 
+integer (signed int). It must be positive. There MAY or MAY NOT be commas 
+between edges, including the very last edge. Valid examples include:
+
+AB1 BC2 CA3
+AB1, BC2, CA3
+AB1, BC2, CA3, 
+AB99999, BC7592893, CA123123123
+
+  
+In addition, directed_graph expects that the input file will not contain a given 
+route more than once, and that starting and ending town will not be the same
+town. 
+
+3) TESTS
+
+The directed_graph class suite itself can be tested with the command: 
+
+        user@hostname:<pathname>/DirectedGraph$ ant junit
+
+This spawns a series of parameterized JUnit tests. Note that this only 
+tests the library itself, and not any later user programs. 
+
+
+
+
+
