@@ -101,20 +101,14 @@ public class Graph
         /* is START a new node in the graph? */
         if( !this.isNode(start))
         {
-            /* Create a new Node instance */
             start_node = new Node(start);
-
-            /* Insert the node into the graph */
             this.insert(start_node);
         }
 
         /* Is END a new node in the graph? */
         if (!this.isNode(end))
         {
-            /* Create a new Node instance */
             end_node = new Node(end);
-
-            /* Insert the node into the graph */
             this.insert(end_node);
         }
 
@@ -212,8 +206,8 @@ public class Graph
             }
         }
 
-    /* Builds a MINHEAP data structure in of the graph's nodes, 
-       where the heap priority is the indicated by the distance 
+    /* Builds a MINHEAP data structure of the graph's nodes, 
+       where the heap priority is the distance 
        from START. All nodes are initialized as being an infinite 
        distance from START. START itslef is given a distance of 0. */
     public MinHeap initializeHeap(char start)
